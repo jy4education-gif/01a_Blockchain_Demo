@@ -1,0 +1,28 @@
+{
+  "name": "01a_blockchain_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "block.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-test": "nodemon dev-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jy4education-gif/01a_Blockchain_Demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jy4education-gif/01a_Blockchain_Demo/issues"
+  },
+  "homepage": "https://github.com/jy4education-gif/01a_Blockchain_Demo#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "crypto-js": "^4.2.0"
+  }
+}
