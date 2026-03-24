@@ -28,8 +28,8 @@ class Block {
     static mineBlock(lastBlock, data) {
         const timestamp = Date.now();
         const lastHash = lastBlock.hash;
-        const hash = Block.hash(timestamp, lastHash, data);
-        
+        // const hash = Block.hash(timestamp, lastHash, data);
+        const hash      = Block.leadingZeroHash(timestamp,lastHash,data);
         return new this(timestamp, lastHash, hash, data);
     }
 
@@ -48,6 +48,37 @@ class Block {
     static hash(timestamp, lastHash, data) {
         return SHA512(`${timestamp}${lastHash}${JSON.stringify(data)}`).toString();
     }
+
+    static leadingZeroHash(timestamp,lastHash,blockData){
+        
+        let toBeHashed = timestamp + lastHash + blockData;
+
+        const leadingZeros = 4;
+        const pattern = "^0{"+leadingZeros+"}\w*";
+        const regex = new RegExp(pattern);
+
+        const maxNonce = 100000;
+        let tmpNonce = 0;
+        let tmpHash;
+
+        let startTime = Date.now();
+
+        do {
+            tmpHash = this.hash(toBeHashed + tmpNonce);
+            tmpNonce++;
+        } while (!regex.test(tmpHash) && tmpNonce < maxNonce);
+        
+        let endTime = Date.now();
+        
+        let message =    
+        `Anzahl der Durchläufe: ${tmpNonce}
+        Hashwert:  ${tmpHash}
+        Berechnungen pro ms: ${tmpNonce/(endTime-startTime)}`
+        console.log(message);
+
+        return tmpHash;
+    }
+
 }
 
 // Export des Moduls für die Nutzung in dev-test.js

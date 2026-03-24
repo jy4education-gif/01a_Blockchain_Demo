@@ -66,3 +66,33 @@ for (let i = 1; i < chain.length; i++) {
         console.log(`\x1b[31m[FEHLER]\x1b[0m Bruch in der Kette bei Block ${i}!`);
     }
 }
+
+
+
+/*  Test der Block-Funktionalität  */
+/*
+const Blockchain = require("./blockchain");
+const Block = require("./block");
+
+
+const block = new Block("aktuelle zeit","hash1","hash2","meine Daten");
+console.log(block.toString());
+console.log(Block.genesis().toString());
+
+
+const testBlock = Block.mineBlock(Block.genesis(),"testDaten")
+console.log(testBlock.toString());
+
+const chain = new Blockchain();
+console.log(chain);
+
+chain.addBlock("daten von Block 1");
+console.log(chain);
+
+chain.addBlock("daten von Block 2");
+chain.addBlock("daten von Block 3");
+chain.addBlock("daten von Block 4");
+
+console.log(chain);
+*/
+
